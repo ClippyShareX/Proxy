@@ -310,7 +310,7 @@ func connectToDatabase(mongoURL string) {
 		log.Fatal(err)
 	}
 
-	database := client.Database("bsveqktjygkytrf")
+	database := client.Database("clippy")
 	collection = database.Collection("files")
 	shortenerCol = database.Collection("shorteners")
 	invisibleURL = database.Collection("invisibleurls")
