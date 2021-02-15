@@ -45,7 +45,7 @@ var (
 const (
 	embedTemplate = `<html>
 		<head>
-			<title>{{.User}} on dny.wtf</title>
+			<title>{{.User}} on clippy.gg</title>
 			<meta charset="UTF-8">
 			<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 			<meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -59,7 +59,7 @@ const (
 			{{ end }}
 			<meta name="theme-color" content="{{.Color}}" />
 			<link type="application/json+oembed" href="{{.OEmbedURL}}" />
-			<link rel="stylesheet" href="https://cdn.dny.wtf/dny/cdn.css">
+			<link rel="stylesheet" href="https://cdn.clippy.gg/clippy/cdn.css">
 		</head>
 
 		<body>
@@ -123,7 +123,7 @@ func requestHandler(ctx *fasthttp.RequestCtx) {
 
 	switch {
 	case requestPath == "/":
-		ctx.Redirect("https://dny.wtf/?utm_source=proxy", 301)
+		ctx.Redirect("https://clippy.gg/?utm_source=proxy", 301)
 	case strings.HasSuffix(basePath, ".json"):
 		requestPath = strings.SplitN(basePath, ".json", 2)[0]
 		var file bson.M
