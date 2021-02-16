@@ -70,12 +70,8 @@ const (
 						{{ else }}
 						<iframe style="-webkit-user-select: none;margin: auto;box-shadow: 0 0 5px rgb(0, 0, 0, 0.5);border:none;" src="{{ .FileURL }}" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" />
 						{{ end }}
-					<h5>
-						Uploaded by:
-							<span class="info">
-								{{.User}}
-							</span>
-						</h5>
+						
+						<h5>Uploaded by:<span class="info">{{.User}}</span></h5>
 				</div>
 			</center>
 		</body>
