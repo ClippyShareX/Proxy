@@ -69,7 +69,7 @@ const (
 						{{ if .Image }}
 						<img style="-webkit-user-select: none;margin: auto;" src="{{.FileURL}}" />
 						{{ else }}
-						<embed allowFullScreen='allowFullScreen' style="-webkit-user-select: none;margin: auto;" src="{{ .FileURL }}" />
+						<embed allowFullScreen:true style="-webkit-user-select: none;margin: auto;" src="{{ .FileURL }}" />
 						{{ end }}
 					</a>
 					<h5>
