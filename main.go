@@ -66,9 +66,9 @@ const (
 			<center>
 				<div class="vertical-center">
 						{{ if .Image }}
-						<img style="-webkit-user-select: none;margin: auto;" src="{{.FileURL}}" />
+						<img style="-webkit-user-select: none;margin: auto;box-shadow: 0 0 5px rgb(0, 0, 0, 0.5);" src="{{.FileURL}}" />
 						{{ else }}
-						<iframe style="-webkit-user-select: none;margin: auto;" src="{{ .FileURL }}" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" />
+						<iframe style="-webkit-user-select: none;margin: auto;box-shadow: 0 0 5px rgb(0, 0, 0, 0.5);" src="{{ .FileURL }}" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" />
 						{{ end }}
 					<h5>
 						Uploaded by:
