@@ -65,7 +65,7 @@ const (
 		<body>
 			<center>
 				<div class="vertical-center">
-					<a href="{{.FileURL}}" target="_blank">
+					<a style="box-shadow: 0 0 5px rgb(0, 0, 0, 0.5);"href="{{.FileURL}}" target="_blank">
 						{{ if .Image }}
 						<img style="-webkit-user-select: none;margin: auto;" src="{{.FileURL}}" />
 						{{ else }}
