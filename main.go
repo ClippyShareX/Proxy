@@ -67,8 +67,13 @@ const (
 				<div class="vertical-center">
 						{{ if .Image }}
 						<img style="-webkit-user-select: none;margin: auto;box-shadow: 0 0 5px rgb(0, 0, 0, 0.5);" src="{{.FileURL}}" />
+						{{ else if .Video }}
+						<video style="-webkit-user-select: none;margin: auto;box-shadow: 0 0 5px rgb(0, 0, 0, 0.5);" controls>
+							<source src="{{ .FileURL }}">
+							Your browser does not support this video tag.
+						</video>
 						{{ else }}
-						<iframe allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" style="-webkit-user-select: none;margin: auto;box-shadow: 0 0 5px rgb(0, 0, 0, 0.5);border:none;" src="{{ .FileURL }}"></iframe>
+						<embed style="-webkit-user-select: none;margin: auto;" src="{{ .FileURL }}" />
 						{{ end }}
 						
 						<h5>Uploaded by: <span class="info">{{.User}}</span></h5>
@@ -219,6 +224,7 @@ func requestHandler(ctx *fasthttp.RequestCtx) {
 				Desc      string
 				Color     string
 				Image     bool
+				Video     bool
 				User string
 				Size string
 				Name string
@@ -232,6 +238,7 @@ func requestHandler(ctx *fasthttp.RequestCtx) {
 				User: 	   uploader["username"].(string),
 				Name:      file["filename"].(string),
 				Size:      file["size"].(string),
+				Video:      mimetype == "video",
 			}
 
 			ctx.SetContentType("text/html")
