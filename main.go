@@ -73,7 +73,19 @@ const (
 							Your browser does not support this video tag.
 						</video>
 						{{ else }}
-						<iframe allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" style="-webkit-user-select: none;margin: auto;box-shadow: 0 0 5px rgb(0, 0, 0, 0.5);border:none;" src="{{ .FileURL }}"></iframe>
+						<h3>
+							{{ .Name }}
+							(<span class="info">{{ .Size }}</span>)
+						</h3>
+						<button onclick="window.location.href = '{{ .FileURL }}'" style="
+						    appearance: none;
+						    background: white;
+						    padding: 10px;
+						    border: none;
+						    border-radius: 50px;
+						    font-size: .9rem;
+						    cursor: pointer;
+						">Download</button>
 						{{ end }}
 						
 						<h5>Uploaded by: <span class="info">{{.User}}</span></h5>
