@@ -64,11 +64,7 @@ const (
 
 		<body>
 			<center>
-				<div class="box vertical-center">
-					<h3>
-						{{ .Name }}
-						(<span class="info">{{ .Size }}</span>)
-					</h3>
+				<div class="vertical-center">
 					<a href="{{.FileURL}}" target="_blank">
 						{{ if .Image }}
 						<img style="-webkit-user-select: none;margin: auto;" src="{{.FileURL}}" />
@@ -76,12 +72,12 @@ const (
 						<embed style="-webkit-user-select: none;margin: auto;" src="{{ .FileURL }}" />
 						{{ end }}
 					</a>
-					<h4>
+					<h5>
 						Uploaded by:
 							<span class="info">
 								{{.User}}
 							</span>
-						</h4>
+						</h5>
 				</div>
 			</center>
 		</body>
