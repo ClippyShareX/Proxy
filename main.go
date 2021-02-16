@@ -65,13 +65,11 @@ const (
 		<body>
 			<center>
 				<div class="vertical-center">
-					<a style="box-shadow: 0 0 5px rgb(0, 0, 0, 0.5);"href="{{.FileURL}}" target="_blank">
 						{{ if .Image }}
 						<img style="-webkit-user-select: none;margin: auto;" src="{{.FileURL}}" />
 						{{ else }}
 						<iframe style="-webkit-user-select: none;margin: auto;" src="{{ .FileURL }}" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" />
 						{{ end }}
-					</a>
 					<h5>
 						Uploaded by:
 							<span class="info">
