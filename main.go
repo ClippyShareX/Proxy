@@ -68,7 +68,7 @@ const (
 						{{ if .Image }}
 						<img style="-webkit-user-select: none;margin: auto;box-shadow: 0 0 5px rgb(0, 0, 0, 0.5);" src="{{.FileURL}}" />
 						{{ else }}
-						<iframe allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" style="-webkit-user-select: none;margin: auto;box-shadow: 0 0 5px rgb(0, 0, 0, 0.5);border:none;" src="{{ .FileURL }}"/>
+						<iframe allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" style="-webkit-user-select: none;margin: auto;box-shadow: 0 0 5px rgb(0, 0, 0, 0.5);border:none;" src="{{ .FileURL }}"></iframe>
 						{{ end }}
 						
 						<h5>Uploaded by:<span class="info">{{.User}}</span></h5>
