@@ -68,12 +68,12 @@ const (
 						{{ if .Image }}
 						<img style="-webkit-user-select: none;margin: auto;box-shadow: 0 0 5px rgb(0, 0, 0, 0.5);" src="{{.FileURL}}" />
 						{{ else if .Video }}
-						<video style="-webkit-user-select: none;margin: auto;box-shadow: 0 0 5px rgb(0, 0, 0, 0.5);" controls>
+						<video style="-webkit-user-select: none;margin: auto;box-shadow: 0 0 5px rgb(0, 0, 0, 0.5);" controls autoplay>
 							<source src="{{ .FileURL }}">
 							Your browser does not support this video tag.
 						</video>
 						{{ else }}
-						<embed style="-webkit-user-select: none;margin: auto;" src="{{ .FileURL }}" />
+						<iframe allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" style="-webkit-user-select: none;margin: auto;box-shadow: 0 0 5px rgb(0, 0, 0, 0.5);border:none;" src="{{ .FileURL }}"></iframe>
 						{{ end }}
 						
 						<h5>Uploaded by: <span class="info">{{.User}}</span></h5>
