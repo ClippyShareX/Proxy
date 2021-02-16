@@ -69,7 +69,7 @@ const (
 						{{ if .Image }}
 						<img style="-webkit-user-select: none;margin: auto;" src="{{.FileURL}}" />
 						{{ else }}
-						<iframe allowfullscreen:true style="-webkit-user-select: none;margin: auto;" src="{{ .FileURL }}" />
+						<iframe style="-webkit-user-select: none;margin: auto;" src="{{ .FileURL }}" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" />
 						{{ end }}
 					</a>
 					<h5>
