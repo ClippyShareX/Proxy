@@ -59,7 +59,7 @@ const (
 			{{ end }}
 			<meta name="theme-color" content="{{.Color}}" />
 			<link type="application/json+oembed" href="{{.OEmbedURL}}" />
-			<link rel="stylesheet" href="https://cdn.clippy.gg/clippy/cdn.css">
+			<link rel="stylesheet" href="https://cdn.clippy.gg/cdn.css">
 		</head>
 
 		<body>
@@ -130,7 +130,7 @@ func requestHandler(ctx *fasthttp.RequestCtx) {
 
 	switch {
 	case requestPath == "/":
-		ctx.Redirect("https://clippy.gg/?utm_source=proxy", 301)
+		ctx.Redirect("https://clippy.gg", 301)
 	case strings.HasSuffix(basePath, ".json"):
 		requestPath = strings.SplitN(basePath, ".json", 2)[0]
 		var file bson.M
@@ -215,7 +215,7 @@ func requestHandler(ctx *fasthttp.RequestCtx) {
 		}
 
 		mimetype := strings.SplitN(file["mimetype"].(string), "/", 2)[0]
-		cdnURL := os.Getenv("S3_ENDPOINT") + "/" + os.Getenv("S3_BUCKET_NAME") + "/" + file["key"].(string)
+		cdnURL := os.Getenv("S3_ENDPOINT") + "/" + file["key"].(string)
 		embed := file["embed"].(primitive.M)
 		uploader := file["uploader"].(primitive.M)
 
@@ -301,15 +301,17 @@ func sendErr(ctx *fasthttp.RequestCtx, errMsg string) {
 }
 
 func connectToS3(endpoint string) {
-	s3Config := &aws.Config{
-		Credentials:      credentials.NewStaticCredentials(os.Getenv("AWS_ACCESS_KEY_ID"), os.Getenv("AWS_SECRET_ACCESS_KEY"), ""),
-		Endpoint:         aws.String(endpoint),
-		Region:           aws.String("us-east-1"),
-		DisableSSL:       aws.Bool(true),
-		S3ForcePathStyle: aws.Bool(true),
+	sess, err := session.NewSession(&aws.Config{
+		Region: aws.String("us-west-2"),
+	})
+	if err != nil {
+		log.Fatal(err)
 	}
-	newSession := session.New(s3Config)
-	svc = s3.New(newSession)
+
+	svc = s3.New(sess, &aws.Config{
+		Endpoint: aws.String(endpoint),
+	})
+
 	defer fmt.Println("Connected to S3")
 }
 
