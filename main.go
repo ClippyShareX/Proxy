@@ -216,7 +216,6 @@ func requestHandler(ctx *fasthttp.RequestCtx) {
 		mimetype := strings.SplitN(file["mimetype"].(string), "/", 2)[0]
 		cdnURL := "https://cdn.clippy.gg" + "/" + file["key"].(string)
 		embed := file["embed"].(primitive.M)
-		uploader := file["uploader"].(primitive.M)
 
 		embed["description"] = strings.ReplaceAll(embed["description"].(string), "{domain}", host)
 
