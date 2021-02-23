@@ -4,7 +4,6 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-	"github.com/aws/aws-sdk-go/aws/credentials"
 	"html/template"
 	"io/ioutil"
 	"log"
