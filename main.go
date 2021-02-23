@@ -233,20 +233,12 @@ func requestHandler(ctx *fasthttp.RequestCtx) {
 				Desc      string
 				Color     string
 				Image     bool
-				Video     bool
-				User 	  string
-				Size      string
-				Name      string
 			}{
 				FileURL:   cdnURL,
 				OEmbedURL: "https://" + host + "/" + file["filename"].(string) + ".json",
 				Desc:      embed["description"].(string),
 				Color:     embed["color"].(string),
 				Image:     mimetype == "image",
-				User: 	   uploader["username"].(string),
-				Name:      file["filename"].(string),
-				Size:      file["size"].(string),
-				Video:     mimetype == "video",
 			}
 
 			ctx.SetContentType("text/html")
