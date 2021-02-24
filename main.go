@@ -305,8 +305,7 @@ func connectToS3(endpoint string) {
     	secret := os.Getenv("AWS_SECRET_ACCESS_KEY")
         s3Config := &aws.Config{
 		Credentials: credentials.NewStaticCredentials(key, secret, ""),
-		Endpoint:    aws.String("https://nyc3.digitaloceanspaces.com"),
-		Region:      aws.String("us-east-1"),
+		Region:      aws.String("us-east-3"),
     	}
     	newSession := session.New(s3Config)
 	svc = s3.New(newSession)
