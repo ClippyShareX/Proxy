@@ -300,16 +300,15 @@ func sendErr(ctx *fasthttp.RequestCtx, errMsg string) {
 }
 
 func connectToS3(endpoint string) {
-    sess, err := session.NewSession(&aws.Config{
-        Region: aws.String("us-west-2"),
-    })
-    if err != nil {
-        log.Fatal(err)
-    }
-
-    svc = s3.New(sess, &aws.Config{
-        Endpoint: aws.String(endpoint),
-    })
+    key := os.Getenv("AWS_ACCESS_KEY_ID")
+        secret := os.Getenv("AWS_SECRET_ACCESS_KEY")
+        s3Config := &aws.Config{
+        	Endpoint:    aws.String("https://nyc3.digitaloceanspaces.com"),
+        	Credentials: credentials.NewStaticCredentials(key, secret, ""),
+        	Region:      aws.String("us-east-3"),
+        }
+        newSession := session.New(s3Config)
+    svc = s3.New(newSession)
 
     defer fmt.Println("Connected to S3")
 }
